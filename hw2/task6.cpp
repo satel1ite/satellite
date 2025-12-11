@@ -30,6 +30,16 @@ Node* ReverseList(Node* head) {
     return prev;
 }
 
+Node* ClearList(Node* head) {
+    Node* current = head;
+    while (current != nullptr) {
+        Node* next = current->next;
+        delete current;
+        current = next;
+    }
+    return nullptr;
+}
+
 int main() {
     Node* head = nullptr;
     std::string command;
@@ -49,5 +59,6 @@ int main() {
             }
         }
     }
+    head = ClearList(head);
     return 0;
 }
