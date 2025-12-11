@@ -1,5 +1,6 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <iostream>
+#include <vector>
+#include <algorithm>
 
 struct Road {
     int from_num;
@@ -9,14 +10,14 @@ struct Road {
 
 int main() {
     int M;
-    cin >> M;
+    std::cin >> M;
     const int MAXM = 10;
 
-    vector<Road> roads(M);
+    std::vector<Road> roads(M);
     for (int i = 0; i < M; ++i) {
-        cin >> roads[i].from_num;
-        cin >> roads[i].to_num;
-        cin >> roads[i].distance;
+        std::cin >> roads[i].from_num;
+        std::cin >> roads[i].to_num;
+        std::cin >> roads[i].distance;
     }
 
     double g[MAXM][MAXM];
@@ -34,13 +35,13 @@ int main() {
         }
     }
 
-    vector<int> permutation;
+    std::vector<int> permutation;
     for (int i = 0; i < MAXM; ++i) {
-    permutation.push_back(i);
-	}
-    
+        permutation.push_back(i);
+    }
+
     double best_len = 1e300;
-    vector<int> best_path;
+    std::vector<int> best_path;
 
     do {
         if (permutation[0] != 0) continue;
@@ -70,14 +71,14 @@ int main() {
     } while (next_permutation(permutation.begin(), permutation.end()));
 
     if (best_len == 1e300) {
-        cout << "NO SOLUTION\n";
+        std::cout << "NO SOLUTION\n";
     } else {
-        cout << best_len << "\n";
+        std::cout << best_len << "\n";
         for (size_t i = 0; i < best_path.size(); ++i) {
-            if (i) cout << ' ';
-            cout << best_path[i];
+            if (i) std::cout << ' ';
+            std::cout << best_path[i];
         }
-        cout << "\n";
+        std::cout << "\n";
     }
 
     return 0;
